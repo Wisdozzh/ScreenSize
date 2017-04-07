@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_widthPixels"
+        style="@style/TextViewStyle" />
+
+    <TextView
+        android:id="@+id/tv_heightPixels"
+        style="@style/TextViewStyle" />
+
+    <TextView
+        android:id="@+id/tv_densityDpi"
+        style="@style/TextViewStyle" />
+
+    <TextView
+        android:id="@+id/tv_xdpi"
+        style="@style/TextViewStyle" />
+
+    <TextView
+        android:id="@+id/tv_ydpi"
+        style="@style/TextViewStyle" />
+
+    <TextView
+        android:id="@+id/tv_density"
+        style="@style/TextViewStyle" />
+
+    <TextView
+        android:id="@+id/tv_scaledDensity"
+        style="@style/TextViewStyle" />
+
+    <TextView
+        android:id="@+id/tv_size"
+        style="@style/TextViewStyle" />
+
+    <TextView
+        android:id="@+id/tv_real_size"
+        style="@style/TextViewStyle" />
+
+    <TextView
+        android:id="@+id/tv_real_screen_inches"
+        style="@style/TextViewStyle" />
+
+    <TextView
+        android:id="@+id/tv_screen_inches"
+        style="@style/TextViewStyle" />
+
+</LinearLayout>
