@@ -9,6 +9,7 @@ import android.widget.TextView;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
+
 /**
  * <pre>
  *    author Wisdozzh
@@ -24,7 +25,7 @@ import java.text.DecimalFormat;
 public class MainActivity extends AppCompatActivity {
 
     /*
-	 * DensityDpi 几个常用值
+     * DensityDpi 几个常用值
 	 */
     public static int DENSITY_LOW = 120;
     public static int DENSITY_MEDIUM = 160;// 默认值
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public static int DENSITY_400 = 400;
     public static int DENSITY_XXHIGH = 480;
     public static int DENSITY_XXXHIGH = 640;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         TextView tvYdpi = (TextView) findViewById(R.id.tv_ydpi);
         TextView tvDensity = (TextView) findViewById(R.id.tv_density);
         TextView tvScaledDensity = (TextView) findViewById(R.id.tv_scaledDensity);
+
+        TextView tvMaxMemory = (TextView) findViewById(R.id.tv_max_memory);
 
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         // 宽高像素
@@ -66,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         getScreenSizeOfDevice2();
+
+        // 获取单Process最大可用内存
+        int onePreocessMaxMemory = getOnePreocessMaxMemory();
+        tvMaxMemory.setText("一个Process 只能使用" + onePreocessMaxMemory + "M内存");
     }
 
     /**
@@ -75,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         Point point = new Point();
         getWindowManager().getDefaultDisplay().getSize(point);
         TextView tvSize = (TextView) findViewById(R.id.tv_size);
-        tvSize.setText("应用屏幕高度："  + point.x + " x " + point.y);
+        tvSize.setText("应用屏幕高度：" + point.x + " x " + point.y);
 
         getWindowManager().getDefaultDisplay().getRealSize(point);
         TextView tvRealSize = (TextView) findViewById(R.id.tv_real_size);
@@ -123,5 +131,12 @@ public class MainActivity extends AppCompatActivity {
         double result = bg.setScale(leave, BigDecimal.ROUND_HALF_UP).doubleValue();
         DecimalFormat df = new DecimalFormat("0.0");
         return df.format(result);
+    }
+
+    public int getOnePreocessMaxMemory() {
+        Runtime runtime = Runtime.getRuntime();
+        long maxMemoryByByte = runtime.maxMemory(); // byte
+        int maxMemoryByMegabyte = (int) (maxMemoryByByte / (1024 * 1024));
+        return maxMemoryByMegabyte;
     }
 }
